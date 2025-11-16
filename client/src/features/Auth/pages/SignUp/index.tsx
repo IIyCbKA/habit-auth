@@ -1,11 +1,11 @@
 import React from "react";
 import sharedAuthStyles from "@/features/Auth/shared/styles.module.css";
 import { INPUT_ELEMENTS, SIGN_UP_BUTTON_TEXT, TITLE_SCREEN } from "./constants";
-import { EMPTY_STRING } from "@/shared/constants";
+import { EMPTY_STRING } from "@/core/constants";
 import ActionBar from "./ActionBar";
 import SignInWith from "@/features/Auth/shared/SignInWith";
 import { ErrorsMap, FormData } from "./types";
-import { registerUser } from "@/features/Auth/slice";
+import { registerUser } from "@/domain/auth/thunks";
 import { useAppDispatch } from "@/store/hooks";
 import { Input, Divider, Button, Typography } from "@/components";
 import PasswordAdornment from "@/features/Auth/shared/PasswordAdornment";

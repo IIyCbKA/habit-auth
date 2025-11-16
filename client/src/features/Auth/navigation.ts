@@ -6,7 +6,7 @@ import {
   registerUser,
   passwordResetRequest,
   passwordResetConfirm,
-} from "./slice";
+} from "@/domain/auth/thunks";
 import { router } from "@/routes/router";
 import { PATHS } from "@/routes/paths";
 

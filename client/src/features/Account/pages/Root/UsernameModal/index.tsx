@@ -3,13 +3,14 @@ import styles from "./styles.module.css";
 import { UsernameModalProps } from "./interface";
 import { Button, Input, Modal, Typography } from "@/components";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { selectUsername, usernameUpdate } from "@/features/Auth/slice";
+import { usernameUpdate } from "@/domain/auth/thunks";
+import { selectUsername } from "@/domain/auth/selectors";
 import {
   CONTINUE_BUTTON_TEXT,
   MODAL_TITLE,
   NEW_USERNAME_PLACEHOLDER,
 } from "./constants";
-import { EMPTY_STRING } from "@/shared/constants";
+import { EMPTY_STRING } from "@/core/constants";
 
 export default function UsernameModal({
   isOpen,

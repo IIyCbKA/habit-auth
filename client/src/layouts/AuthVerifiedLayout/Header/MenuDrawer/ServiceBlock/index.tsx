@@ -3,7 +3,7 @@ import { Button } from "@/components";
 import sharedDrawerStyles from "@/layouts/AuthVerifiedLayout/Header/MenuDrawer/styles.module.css";
 import { SETTINGS_BUTTON_TEXT, SIGN_OUT_BUTTON_TEXT } from "./constants";
 import { useAppDispatch } from "@/store/hooks";
-import { logout } from "@/features/Auth/slice";
+import { logout } from "@/domain/auth/thunks";
 import { Logout, Settings } from "@/assets/icons";
 import { useNavigate } from "react-router-dom";
 import { PATHS } from "@/routes/paths";

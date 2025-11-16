@@ -3,7 +3,7 @@ import {
   MINUTES_SECONDS_SUBSTR_END,
   MINUTES_SECONDS_SUBSTR_START,
 } from "./constants";
-import { DeviceInfo } from "@/shared/types";
+import { DeviceInfo } from "@/core/types";
 
 export const seconds2MinutesSeconds: (seconds: number) => string = (
   seconds: number,

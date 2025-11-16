@@ -1,7 +1,7 @@
 import React from "react";
 import { ControlRowProps } from "./interface";
 import styles from "./styles.module.css";
-import sharedStyles from "@/shared/styles.module.css";
+import baseStyles from "@/core/base.module.css";
 import classNames from "classnames";
 import { Button, Divider } from "@/components";
 import { Grid } from "@/assets/icons";
@@ -43,7 +43,7 @@ function ControlRowInner(
 
   const rootStyles = classNames(styles.rootControlRow, className);
   const iconStyles = classNames(styles.avatar, iconClassName);
-  const infoStyles = classNames(styles.info, sharedStyles.truncateText);
+  const infoStyles = classNames(styles.info, baseStyles.truncateText);
   const buttonStyles = classNames(styles.button, buttonClassName);
 
   return (

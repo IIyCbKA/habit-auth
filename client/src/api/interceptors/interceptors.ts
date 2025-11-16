@@ -1,6 +1,6 @@
 import { apiClient } from "../clients";
 import { AxiosResponse, InternalAxiosRequestConfig } from "axios";
-import { selectAccessToken } from "@/features/Auth/slice";
+import { selectAccessToken } from "@/domain/auth/selectors";
 import { ENDPOINT, HTTP_STATUS } from "../config.enums";
 import { store } from "@/store/store";
 import { refreshInterceptor } from "./refresh.interceptor";

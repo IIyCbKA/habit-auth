@@ -1,4 +1,4 @@
-import { DeviceInfo } from "@/shared/types";
+import { DeviceInfo } from "@/core/types";
 
 /*
 --------------AuthStatus type--------------

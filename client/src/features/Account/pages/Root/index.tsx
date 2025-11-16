@@ -8,7 +8,7 @@ import {
 import ControlRow from "@/features/Account/components/ControlRow";
 import { User } from "@/assets/icons";
 import { useAppSelector } from "@/store/hooks";
-import { selectUsername } from "@/features/Auth/slice";
+import { selectUsername } from "@/domain/auth/selectors";
 import UsernameModal from "./UsernameModal";
 
 export default function RootAccount(): React.ReactElement {

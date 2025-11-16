@@ -1,13 +1,13 @@
 import React from "react";
 import sharedAuthStyles from "@/features/Auth/shared/styles.module.css";
-import { EMPTY_STRING } from "@/shared/constants";
+import { EMPTY_STRING } from "@/core/constants";
 import {
   CODE_PLACEHOLDER,
   CONFIRM_BUTTON_TEXT,
   TITLE_SCREEN,
 } from "./constants";
 import { useAppDispatch } from "@/store/hooks";
-import { emailConfirm } from "@/features/Auth/slice";
+import { emailConfirm } from "@/domain/auth/thunks";
 import ActionBar from "./ActionBar";
 import { Input, Button, Divider, Typography } from "@/components";
 import { validateNonEmpty } from "@/features/Auth/validators";

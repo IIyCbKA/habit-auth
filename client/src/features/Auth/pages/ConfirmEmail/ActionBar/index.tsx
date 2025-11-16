@@ -7,10 +7,10 @@ import {
   RESEND_CODE_BTN_TEXT,
   RESEND_LOCK_SECONDS,
 } from "./constants";
-import { resendCode } from "@/features/Auth/api";
-import { seconds2MinutesSeconds } from "@/shared/utils";
+import { resendCode } from "@/domain/auth/api";
+import { seconds2MinutesSeconds } from "@/core/utils";
 import { useAppDispatch } from "@/store/hooks";
-import { logout } from "@/features/Auth/slice";
+import { logout } from "@/domain/auth/thunks";
 
 export default function ActionBar(): React.ReactElement {
   const [secondsLeft, setSecondsLeft] =

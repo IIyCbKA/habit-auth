@@ -18,8 +18,7 @@ import {
   registerUser,
   passwordResetRequest,
   usernameUpdate,
-} from "@/features/Auth/slice";
-import { RootState } from "@/store/store";
+} from "@/domain/auth/thunks";
 import { RejectedPayload } from "@/store/types";
 
 const createNotification = ({
@@ -73,6 +72,5 @@ const uiSlice = createSlice({
 });
 
 export const { pushNotification, popNotification } = uiSlice.actions;
-export const selectNotifications = (state: RootState) => state.ui.notifications;
 
 export default uiSlice.reducer;

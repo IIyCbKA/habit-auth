@@ -6,16 +6,16 @@ import {
   SIGN_IN_BTN_TEXT,
   TITLE_SCREEN,
 } from "./constants";
-import { EMPTY_STRING } from "@/shared/constants";
+import { EMPTY_STRING } from "@/core/constants";
 import ActionBar from "./ActionBar";
 import { ErrorsMap } from "./types";
 import SignInWith from "@/features/Auth/shared/SignInWith";
-import { loginUser } from "@/features/Auth/slice";
+import { loginUser } from "@/domain/auth/thunks";
 import { useAppDispatch } from "@/store/hooks";
 import { Input, Button, Divider, Typography } from "@/components";
 import PasswordAdornment from "@/features/Auth/shared/PasswordAdornment";
 import { validateNonEmpty } from "@/features/Auth/validators";
-import { collectDeviceInfo } from "@/shared/utils";
+import { collectDeviceInfo } from "@/core/utils";
 
 export default function SignIn(): React.ReactElement {
   const dispatch = useAppDispatch();

@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { IconButton } from "@/components";
 import { ELEMENTS_LIST } from "./constants";
 import { ButtonElement } from "./types";
-import { API_BASE } from "@/shared/constants";
+import { API_BASE } from "@/core/constants";
 import { Provider } from "./types";
 
 export default function ButtonsBlock(): React.ReactElement {

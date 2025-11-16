@@ -1,4 +1,4 @@
-import { EMPTY_STRING_LENGTH } from "@/shared/constants";
+import { EMPTY_STRING_LENGTH } from "@/core/constants";
 import {
   EMAIL_RE,
   EMPTY_FIELD_ERROR,

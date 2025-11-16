@@ -1,5 +1,5 @@
 import axios, { AxiosInstance } from "axios";
-import { API_BASE } from "@/shared/constants";
+import { API_BASE } from "@/core/constants";
 
 export const apiClient: AxiosInstance = axios.create({
   baseURL: API_BASE,

@@ -6,7 +6,7 @@ import {
   SIGN_OUT_BUTTON_TEXT,
 } from "./constants";
 import { Button } from "@/components";
-import { logout } from "@/features/Auth/slice";
+import { logout } from "@/domain/auth/thunks";
 import { useAppDispatch } from "@/store/hooks";
 import classNames from "classnames";
 import { useNavigate } from "react-router-dom";

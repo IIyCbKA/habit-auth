@@ -6,13 +6,13 @@ import {
   SET_NEW_PASSWORD_BUTTON_TEXT,
   TITLE_SCREEN,
 } from "./constants";
-import { EMPTY_STRING } from "@/shared/constants";
+import { EMPTY_STRING } from "@/core/constants";
 import { Button, Divider, Input, Typography } from "@/components";
 import PasswordAdornment from "@/features/Auth/shared/PasswordAdornment";
 import { useAppDispatch } from "@/store/hooks";
-import { passwordResetConfirm } from "@/features/Auth/slice";
+import { passwordResetConfirm } from "@/domain/auth/thunks";
 import { useLoaderData } from "react-router-dom";
-import { PasswordResetValidateData } from "@/features/Auth/types";
+import { PasswordResetValidateData } from "@/domain/auth/types";
 import { ErrorsMap } from "./types";
 import {
   validatePassword,

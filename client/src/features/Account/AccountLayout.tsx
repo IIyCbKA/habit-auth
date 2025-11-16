@@ -4,7 +4,7 @@ import Header from "./components/Header";
 import { Outlet } from "react-router-dom";
 import { Divider } from "@/components";
 
-export default function Account(): React.ReactElement {
+export default function AccountLayout(): React.ReactElement {
   return (
     <div className={styles.accountContentWrap}>
       <div className={styles.accountContent}>

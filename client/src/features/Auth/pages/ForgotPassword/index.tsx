@@ -1,6 +1,6 @@
 import React from "react";
 import sharedAuthStyles from "@/features/Auth/shared/styles.module.css";
-import { EMPTY_STRING } from "@/shared/constants";
+import { EMPTY_STRING } from "@/core/constants";
 import {
   RECOVER_PASSWORD_BTN_TEXT,
   EMAIL_PLACEHOLDER,
@@ -8,7 +8,7 @@ import {
 } from "./constants";
 import ActionBar from "./ActionBar";
 import { useAppDispatch } from "@/store/hooks";
-import { passwordResetRequest } from "@/features/Auth/slice";
+import { passwordResetRequest } from "@/domain/auth/thunks";
 import { Button, Divider, Input, Typography } from "@/components";
 import { validateEmail } from "@/features/Auth/validators";
 

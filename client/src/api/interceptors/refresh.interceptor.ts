@@ -1,4 +1,5 @@
-import { refreshAuth, selectAccessToken } from "@/features/Auth/slice";
+import { refreshAuth } from "@/domain/auth/thunks";
+import { selectAccessToken } from "@/domain/auth/selectors";
 import { store } from "@/store/store";
 import { apiClient } from "../clients";
 import { InternalAxiosRequestConfig } from "axios";

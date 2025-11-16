@@ -2,7 +2,7 @@ import type { LoaderFunction } from "react-router";
 import { redirect } from "react-router";
 import { store } from "@/store/store";
 import { PATHS } from "@/routes/paths";
-import { passwordResetValidate } from "./api";
+import { passwordResetValidate } from "@/domain/auth/api";
 
 export const confirmEmailGuard: LoaderFunction = () => {
   const { user, accessToken } = store.getState().auth;

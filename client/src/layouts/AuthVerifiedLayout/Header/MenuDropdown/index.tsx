@@ -3,7 +3,7 @@ import styles from "./styles.module.css";
 import { ChevronDown, DefaultAvatar } from "@/assets/icons";
 import ButtonsBlock from "./ButtonsBlock";
 import { useAppSelector } from "@/store/hooks";
-import { selectUsername } from "@/features/Auth/slice";
+import { selectUsername } from "@/domain/auth/selectors";
 import { Button, Dropdown, ClickAwayListener } from "@/components";
 import { useLocation } from "react-router-dom";
 

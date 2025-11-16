@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppSelector } from "@/store/hooks";
-import { selectNotifications } from "@/features/uiState/slice";
+import { selectNotifications } from "@/core/ui/selectors";
 import { createPortal } from "react-dom";
 import styles from "./styles.module.css";
 import Notification from "@/components/Notification";

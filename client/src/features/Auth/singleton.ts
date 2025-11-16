@@ -1,5 +1,5 @@
 import { store } from "@/store/store";
-import { refreshAuth } from "./slice";
+import { refreshAuth } from "@/domain/auth/thunks";
 
 let authPromise: Promise<void> | null = null;
 

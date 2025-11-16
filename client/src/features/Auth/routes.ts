@@ -1,7 +1,8 @@
+import { createElement } from "react";
 import { RouteObject } from "react-router-dom";
 import { redirect } from "react-router";
 import { PATHS } from "@/routes/paths";
-import Auth from "./index";
+import AuthLayout from "./AuthLayout";
 import SignIn from "@/features/Auth/pages/SignIn";
 import SignUp from "@/features/Auth/pages/SignUp";
 import ConfirmEmail from "@/features/Auth/pages/ConfirmEmail";
@@ -11,12 +12,12 @@ import ResetPassword from "@/features/Auth/pages/ResetPassword";
 import { confirmEmailGuard, resetPasswordGuard } from "./guards";
 import { LoadingOverlay } from "@/components";
 
-const Fallback = () => <LoadingOverlay />;
+const Fallback = () => createElement(LoadingOverlay);
 
 export const authRoutes: RouteObject[] = [
   {
     path: PATHS.AUTH,
-    Component: Auth,
+    Component: AuthLayout,
     children: [
       {
         index: true,

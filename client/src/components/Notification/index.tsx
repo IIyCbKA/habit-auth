@@ -1,10 +1,10 @@
 import React from "react";
 import styles from "./styles.module.css";
-import sharedStyles from "@/shared/styles.module.css";
+import baseStyles from "@/core/base.module.css";
 import { NotificationProps } from "./interface";
 import { useAppDispatch } from "@/store/hooks";
 import classNames from "classnames";
-import { popNotification } from "@/features/uiState/slice";
+import { popNotification } from "@/core/ui/slice";
 import { Close } from "@/assets/icons";
 import { CSSTransition } from "react-transition-group";
 import IconButton from "@/components/Buttons/IconButton";
@@ -28,7 +28,7 @@ function Notification({
   const [visible, setVisible] = React.useState<boolean>(true);
 
   const notificationStyles = classNames(styles.notificationRoot, className);
-  const contentStyles = classNames(styles.contentZone, sharedStyles.breakText);
+  const contentStyles = classNames(styles.contentZone, baseStyles.breakText);
 
   const onExited: () => void = React.useCallback((): void => {
     dispatch(popNotification(id));

@@ -1,3 +1,4 @@
+import { createElement } from "react";
 import {
   createBrowserRouter,
   Outlet,
@@ -12,7 +13,7 @@ import AuthVerifiedLayout from "@/layouts/AuthVerifiedLayout";
 import RootLayout from "@/layouts/RootLayout";
 import { accountRoutes } from "@/features/Account/routes";
 
-const Fallback = () => <LoadingOverlay />;
+const Fallback = () => createElement(LoadingOverlay);
 const Empty = () => null;
 
 const appRoutes: RouteObject[] = [
