@@ -17,7 +17,7 @@ import { ErrorsMap } from "./types";
 import {
   validatePassword,
   validatePasswordConfirmation,
-} from "@/features/Auth/validators";
+} from "@/domain/auth/validators";
 
 export default function ResetPassword(): React.ReactElement {
   const { uid, token } = useLoaderData() as PasswordResetValidateData;

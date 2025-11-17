@@ -4,9 +4,11 @@ error          - flag indicating whether the input is in an error state
 fullWidth      - flag to stretch the input to fill the parent's width
 helperText     - text displayed under the input for guidance or error messages
 inputAdornment - icon for end of input field
+rootProps      - props for root container
+wrapperProps   - props for wrapper container
 */
 
-import React, { InputHTMLAttributes } from "react";
+import React, { HTMLAttributes, InputHTMLAttributes } from "react";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: boolean;
@@ -15,4 +17,6 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   onlyDisabled?: boolean;
 
   inputAdornment?: React.ReactNode;
+  rootProps?: HTMLAttributes<HTMLDivElement>;
+  wrapperProps?: HTMLAttributes<HTMLSpanElement>;
 }

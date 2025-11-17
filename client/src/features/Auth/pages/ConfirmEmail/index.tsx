@@ -10,7 +10,7 @@ import { useAppDispatch } from "@/store/hooks";
 import { emailConfirm } from "@/domain/auth/thunks";
 import ActionBar from "./ActionBar";
 import { Input, Button, Divider, Typography } from "@/components";
-import { validateNonEmpty } from "@/features/Auth/validators";
+import { validateNonEmpty } from "@/domain/auth/validators";
 
 export default function ConfirmEmail(): React.ReactElement {
   const [code, setCode] = React.useState<string>(EMPTY_STRING);

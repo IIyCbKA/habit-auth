@@ -14,7 +14,7 @@ import { loginUser } from "@/domain/auth/thunks";
 import { useAppDispatch } from "@/store/hooks";
 import { Input, Button, Divider, Typography } from "@/components";
 import PasswordAdornment from "@/features/Auth/shared/PasswordAdornment";
-import { validateNonEmpty } from "@/features/Auth/validators";
+import { validateNonEmpty } from "@/domain/auth/validators";
 import { collectDeviceInfo } from "@/core/utils";
 
 export default function SignIn(): React.ReactElement {

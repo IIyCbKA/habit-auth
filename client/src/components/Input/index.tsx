@@ -4,20 +4,15 @@ import { InputProps } from "./interface";
 import { HelperProps } from "./types";
 import classNames from "classnames";
 
-function Helper({
-  text,
-  error,
-  className,
-  ...other
-}: HelperProps): React.ReactElement | null {
-  const helperStyles = classNames(styles.helper, className, {
+function Helper({ id, text, error }: HelperProps): React.ReactElement | null {
+  const helperStyles = classNames(styles.helper, {
     [styles.error]: error,
   });
 
   if (!text) return null;
 
   return (
-    <div {...other} className={helperStyles}>
+    <div id={id} className={helperStyles}>
       {text}
     </div>
   );
@@ -33,26 +28,33 @@ function InputInner(
     inputAdornment,
     id,
     name,
+    rootProps,
+    wrapperProps,
     ...other
   }: InputProps,
   ref: React.ForwardedRef<HTMLInputElement>,
 ): React.ReactElement {
-  const inputWrapperStyles = classNames(styles.inputWrapper, {
+  const { className: rootClassName, ...otherRootProps } = rootProps || {};
+  const { className: wrapClassName, ...otherWrapProps } = wrapperProps || {};
+
+  const rootStyles = classNames(styles.inputRoot, rootClassName);
+  const inputWrapperStyles = classNames(styles.inputWrapper, wrapClassName, {
     [styles.fullWidth]: fullWidth,
     [styles.error]: error,
     [styles.onlyDisabledWrapper]: onlyDisabled,
   });
-
   const inputStyles = classNames(styles.input, className, {
     [styles.inputWithAdornmentEnd]: inputAdornment,
     [styles.onlyDisabled]: onlyDisabled,
   });
 
-  const helperId = helperText ? `${id ?? name}-helper` : undefined;
+  const helperId = helperText
+    ? `${id ?? name ?? React.useId()}-helper`
+    : undefined;
 
   return (
-    <>
-      <span className={inputWrapperStyles}>
+    <div className={rootStyles} {...otherRootProps}>
+      <span className={inputWrapperStyles} {...otherWrapProps}>
         <input
           ref={ref}
           {...other}
@@ -67,7 +69,7 @@ function InputInner(
         )}
       </span>
       <Helper id={helperId} text={helperText} error={error} />
-    </>
+    </div>
   );
 }
 

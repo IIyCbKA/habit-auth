@@ -11,6 +11,7 @@ import {
   NEW_USERNAME_PLACEHOLDER,
 } from "./constants";
 import { EMPTY_STRING } from "@/core/constants";
+import { validateNonEmpty } from "@/domain/auth/validators";
 
 export default function UsernameModal({
   isOpen,
@@ -20,21 +21,32 @@ export default function UsernameModal({
   const dispatch = useAppDispatch();
   const [newUsername, setNewUsername] = React.useState<string>(EMPTY_STRING);
   const [isProcessing, setProcessing] = React.useState<boolean>(false);
+  const [error, setError] = React.useState<string | undefined>(undefined);
+  const newUsernameRef = React.useRef<HTMLInputElement | null>(null);
 
   const onNewUsernameChange: (
     e: React.ChangeEvent<HTMLInputElement>,
   ) => void = (e: React.ChangeEvent<HTMLInputElement>): void => {
     setNewUsername(e.target.value);
+    if (error) setError(undefined);
   };
 
-  const cleanNewUsername: () => void = (): void => {
+  const onExited: () => void = (): void => {
     setNewUsername(EMPTY_STRING);
+    setError(undefined);
   };
 
   const onSubmit: (e: React.FormEvent) => void = async (
     e: React.FormEvent,
   ): Promise<void> => {
     e.preventDefault();
+
+    const validation = validateNonEmpty(newUsername);
+    setError(validation);
+    if (validation) {
+      newUsernameRef.current?.focus();
+      return;
+    }
 
     setProcessing(true);
     try {
@@ -50,7 +62,7 @@ export default function UsernameModal({
     <Modal
       isOpen={isOpen}
       onClose={onClose}
-      onExited={cleanNewUsername}
+      onExited={onExited}
       withCloseButton
     >
       <form className={styles.modalContent} onSubmit={onSubmit} noValidate>
@@ -58,9 +70,12 @@ export default function UsernameModal({
         <Input fullWidth disabled onlyDisabled value={username} />
         <Input
           fullWidth
+          ref={newUsernameRef}
           value={newUsername}
           onChange={onNewUsernameChange}
           placeholder={NEW_USERNAME_PLACEHOLDER}
+          error={Boolean(error)}
+          helperText={error}
         />
         <Button
           fullWidth

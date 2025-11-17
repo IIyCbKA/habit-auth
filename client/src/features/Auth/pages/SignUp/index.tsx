@@ -14,7 +14,7 @@ import {
   validateNonEmpty,
   validatePassword,
   validatePasswordConfirmation,
-} from "@/features/Auth/validators";
+} from "@/domain/auth/validators";
 
 export default function SignUp(): React.ReactElement {
   const [isProcessing, setProcessing] = React.useState<boolean>(false);

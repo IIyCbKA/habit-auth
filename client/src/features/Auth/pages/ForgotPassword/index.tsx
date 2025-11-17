@@ -10,7 +10,7 @@ import ActionBar from "./ActionBar";
 import { useAppDispatch } from "@/store/hooks";
 import { passwordResetRequest } from "@/domain/auth/thunks";
 import { Button, Divider, Input, Typography } from "@/components";
-import { validateEmail } from "@/features/Auth/validators";
+import { validateEmail } from "@/domain/auth/validators";
 
 export default function ForgotPassword(): React.ReactElement {
   const dispatch = useAppDispatch();
