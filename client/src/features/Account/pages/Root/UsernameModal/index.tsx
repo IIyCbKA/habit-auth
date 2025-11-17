@@ -65,12 +65,14 @@ export default function UsernameModal({
       onExited={onExited}
       withCloseButton
     >
+      <Typography variant={"h1"}>{MODAL_TITLE}</Typography>
       <form className={styles.modalContent} onSubmit={onSubmit} noValidate>
-        <Typography className={styles.titleModal}>{MODAL_TITLE}</Typography>
         <Input fullWidth disabled onlyDisabled value={username} />
         <Input
           fullWidth
           ref={newUsernameRef}
+          name={"newUsername"}
+          autoComplete={"username"}
           value={newUsername}
           onChange={onNewUsernameChange}
           placeholder={NEW_USERNAME_PLACEHOLDER}

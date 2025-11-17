@@ -18,16 +18,16 @@ export default function ForgotPasswordSent(): React.ReactElement {
   );
 
   return (
-    <div className={sharedAuthStyles.formWrap}>
+    <div className={sharedAuthStyles.rootContainer}>
+      <Typography>{TITLE_SCREEN}</Typography>
       <div className={sharedAuthStyles.formContainer}>
-        <Typography>{TITLE_SCREEN}</Typography>
         <span className={styles.rootText}>{ROOT_TEXT}</span>
-        <div className={questionContainerStyles}>
-          <span className={sharedAuthStyles.actionBarQuestionWrap}>
-            {HAVE_AN_ACCOUNT_QUESTION}
-          </span>
-          <LinkTo to={PATHS.SIGN_IN}>{TO_SIGN_IN_BUTTON_TEXT}</LinkTo>
-        </div>
+      </div>
+      <div className={questionContainerStyles}>
+        <span className={sharedAuthStyles.actionBarQuestionWrap}>
+          {HAVE_AN_ACCOUNT_QUESTION}
+        </span>
+        <LinkTo to={PATHS.SIGN_IN}>{TO_SIGN_IN_BUTTON_TEXT}</LinkTo>
       </div>
     </div>
   );

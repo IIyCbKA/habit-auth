@@ -9,7 +9,7 @@ import {
 import { useAppDispatch } from "@/store/hooks";
 import { emailConfirm } from "@/domain/auth/thunks";
 import ActionBar from "./ActionBar";
-import { Input, Button, Divider, Typography } from "@/components";
+import { Input, Button, Typography } from "@/components";
 import { validateNonEmpty } from "@/domain/auth/validators";
 
 export default function ConfirmEmail(): React.ReactElement {
@@ -50,9 +50,13 @@ export default function ConfirmEmail(): React.ReactElement {
   };
 
   return (
-    <form className={sharedAuthStyles.formWrap} onSubmit={onSubmit} noValidate>
-      <div className={sharedAuthStyles.formContainer}>
-        <Typography>{TITLE_SCREEN}</Typography>
+    <div className={sharedAuthStyles.rootContainer}>
+      <Typography>{TITLE_SCREEN}</Typography>
+      <form
+        className={sharedAuthStyles.formContainer}
+        onSubmit={onSubmit}
+        noValidate
+      >
         <Input
           fullWidth
           ref={codeRef}
@@ -65,7 +69,6 @@ export default function ConfirmEmail(): React.ReactElement {
           error={Boolean(error)}
           helperText={error}
         />
-        <Divider className={sharedAuthStyles.formDivider} flexItem />
         <Button
           isLoading={isProcessing}
           fullWidth
@@ -74,8 +77,8 @@ export default function ConfirmEmail(): React.ReactElement {
         >
           {CONFIRM_BUTTON_TEXT}
         </Button>
-        <ActionBar />
-      </div>
-    </form>
+      </form>
+      <ActionBar />
+    </div>
   );
 }

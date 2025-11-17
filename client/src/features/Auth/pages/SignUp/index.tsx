@@ -7,7 +7,7 @@ import SignInWith from "@/features/Auth/shared/SignInWith";
 import { ErrorsMap, FormData } from "./types";
 import { registerUser } from "@/domain/auth/thunks";
 import { useAppDispatch } from "@/store/hooks";
-import { Input, Divider, Button, Typography } from "@/components";
+import { Input, Button, Typography } from "@/components";
 import PasswordAdornment from "@/features/Auth/shared/PasswordAdornment";
 import {
   validateEmail,
@@ -99,9 +99,13 @@ export default function SignUp(): React.ReactElement {
   };
 
   return (
-    <form className={sharedAuthStyles.formWrap} onSubmit={onSubmit} noValidate>
-      <div className={sharedAuthStyles.formContainer}>
-        <Typography>{TITLE_SCREEN}</Typography>
+    <div className={sharedAuthStyles.rootContainer}>
+      <Typography>{TITLE_SCREEN}</Typography>
+      <form
+        className={sharedAuthStyles.formContainer}
+        onSubmit={onSubmit}
+        noValidate
+      >
         <Input
           fullWidth
           ref={usernameRef}
@@ -113,7 +117,6 @@ export default function SignUp(): React.ReactElement {
           error={Boolean(errors.username)}
           helperText={errors.username}
         />
-        <Divider className={sharedAuthStyles.formDivider} flexItem />
         <Input
           fullWidth
           ref={passwordRef}
@@ -132,7 +135,6 @@ export default function SignUp(): React.ReactElement {
             />
           }
         />
-        <Divider className={sharedAuthStyles.formDivider} flexItem />
         <Input
           fullWidth
           ref={passwordConfirmationRef}
@@ -151,7 +153,6 @@ export default function SignUp(): React.ReactElement {
             />
           }
         />
-        <Divider className={sharedAuthStyles.formDivider} flexItem />
         <Input
           fullWidth
           ref={emailRef}
@@ -164,7 +165,6 @@ export default function SignUp(): React.ReactElement {
           error={Boolean(errors.email)}
           helperText={errors.email}
         />
-        <Divider className={sharedAuthStyles.formDivider} flexItem />
         <Button
           isLoading={isProcessing}
           fullWidth
@@ -173,9 +173,9 @@ export default function SignUp(): React.ReactElement {
         >
           {SIGN_UP_BUTTON_TEXT}
         </Button>
-        <SignInWith />
-        <ActionBar />
-      </div>
-    </form>
+      </form>
+      <SignInWith />
+      <ActionBar />
+    </div>
   );
 }

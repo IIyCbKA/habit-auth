@@ -12,7 +12,7 @@ import { ErrorsMap } from "./types";
 import SignInWith from "@/features/Auth/shared/SignInWith";
 import { loginUser } from "@/domain/auth/thunks";
 import { useAppDispatch } from "@/store/hooks";
-import { Input, Button, Divider, Typography } from "@/components";
+import { Input, Button, Typography } from "@/components";
 import PasswordAdornment from "@/features/Auth/shared/PasswordAdornment";
 import { validateNonEmpty } from "@/domain/auth/validators";
 import { collectDeviceInfo } from "@/core/utils";
@@ -83,9 +83,13 @@ export default function SignIn(): React.ReactElement {
   };
 
   return (
-    <form className={sharedAuthStyles.formWrap} onSubmit={onSubmit} noValidate>
-      <div className={sharedAuthStyles.formContainer}>
-        <Typography variant={"h1"}>{TITLE_SCREEN}</Typography>
+    <div className={sharedAuthStyles.rootContainer}>
+      <Typography variant={"h1"}>{TITLE_SCREEN}</Typography>
+      <form
+        className={sharedAuthStyles.formContainer}
+        onSubmit={onSubmit}
+        noValidate
+      >
         <Input
           fullWidth
           ref={identifierRef}
@@ -97,7 +101,6 @@ export default function SignIn(): React.ReactElement {
           error={Boolean(errors.identifier)}
           helperText={errors.identifier}
         />
-        <Divider className={sharedAuthStyles.formDivider} flexItem />
         <Input
           fullWidth
           ref={passwordRef}
@@ -116,7 +119,6 @@ export default function SignIn(): React.ReactElement {
             />
           }
         />
-        <Divider className={sharedAuthStyles.formDivider} flexItem />
         <Button
           isLoading={isProcessing}
           fullWidth
@@ -125,9 +127,9 @@ export default function SignIn(): React.ReactElement {
         >
           {SIGN_IN_BTN_TEXT}
         </Button>
-        <SignInWith />
-        <ActionBar />
-      </div>
-    </form>
+      </form>
+      <SignInWith />
+      <ActionBar />
+    </div>
   );
 }

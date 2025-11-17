@@ -9,7 +9,7 @@ import {
 import ActionBar from "./ActionBar";
 import { useAppDispatch } from "@/store/hooks";
 import { passwordResetRequest } from "@/domain/auth/thunks";
-import { Button, Divider, Input, Typography } from "@/components";
+import { Button, Input, Typography } from "@/components";
 import { validateEmail } from "@/domain/auth/validators";
 
 export default function ForgotPassword(): React.ReactElement {
@@ -50,9 +50,13 @@ export default function ForgotPassword(): React.ReactElement {
   };
 
   return (
-    <form className={sharedAuthStyles.formWrap} onSubmit={onSubmit} noValidate>
-      <div className={sharedAuthStyles.formContainer}>
-        <Typography>{TITLE_SCREEN}</Typography>
+    <div className={sharedAuthStyles.rootContainer}>
+      <Typography>{TITLE_SCREEN}</Typography>
+      <form
+        className={sharedAuthStyles.formContainer}
+        onSubmit={onSubmit}
+        noValidate
+      >
         <Input
           fullWidth
           ref={emailRef}
@@ -64,7 +68,6 @@ export default function ForgotPassword(): React.ReactElement {
           error={Boolean(error)}
           helperText={error}
         />
-        <Divider className={sharedAuthStyles.formDivider} flexItem />
         <Button
           isLoading={isProcessing}
           fullWidth
@@ -73,8 +76,8 @@ export default function ForgotPassword(): React.ReactElement {
         >
           {RECOVER_PASSWORD_BTN_TEXT}
         </Button>
-        <ActionBar />
-      </div>
-    </form>
+      </form>
+      <ActionBar />
+    </div>
   );
 }

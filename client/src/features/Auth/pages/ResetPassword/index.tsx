@@ -7,7 +7,7 @@ import {
   TITLE_SCREEN,
 } from "./constants";
 import { EMPTY_STRING } from "@/core/constants";
-import { Button, Divider, Input, Typography } from "@/components";
+import { Button, Input, Typography } from "@/components";
 import PasswordAdornment from "@/features/Auth/shared/PasswordAdornment";
 import { useAppDispatch } from "@/store/hooks";
 import { passwordResetConfirm } from "@/domain/auth/thunks";
@@ -102,9 +102,13 @@ export default function ResetPassword(): React.ReactElement {
   };
 
   return (
-    <form className={sharedAuthStyles.formWrap} onSubmit={onSubmit} noValidate>
-      <div className={sharedAuthStyles.formContainer}>
-        <Typography variant={"h1"}>{TITLE_SCREEN}</Typography>
+    <div className={sharedAuthStyles.rootContainer}>
+      <Typography variant={"h1"}>{TITLE_SCREEN}</Typography>
+      <form
+        className={sharedAuthStyles.formContainer}
+        onSubmit={onSubmit}
+        noValidate
+      >
         <Input
           fullWidth
           ref={passwordRef}
@@ -123,7 +127,6 @@ export default function ResetPassword(): React.ReactElement {
             />
           }
         />
-        <Divider className={sharedAuthStyles.formDivider} flexItem />
         <Input
           fullWidth
           ref={passwordConfirmationRef}
@@ -142,7 +145,6 @@ export default function ResetPassword(): React.ReactElement {
             />
           }
         />
-        <Divider className={sharedAuthStyles.formDivider} flexItem />
         <Button
           isLoading={isProcessing}
           fullWidth
@@ -151,7 +153,7 @@ export default function ResetPassword(): React.ReactElement {
         >
           {SET_NEW_PASSWORD_BUTTON_TEXT}
         </Button>
-      </div>
-    </form>
+      </form>
+    </div>
   );
 }
