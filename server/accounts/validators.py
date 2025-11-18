@@ -3,9 +3,8 @@ from django.conf import settings
 from django.core.validators import RegexValidator
 from email_validator import validate_email, EmailNotValidError
 from rest_framework import serializers
-from datetime import timedelta
+from datetime import datetime, timezone as dt_timezone
 
-from core.utils import seconds2dhms
 from .constants import (
   PASSWORD_PATTERN,
   PASSWORD_VALIDATE_ERROR,
@@ -36,14 +35,12 @@ def check_username_change_limit(user: User) -> None:
 
   if active_qs.count() >= settings.USERNAME_CHANGE_LIMIT:
     first_active = active_qs.first()
-    remaining: timedelta = first_active.time_until_next_change()
-    human: str = seconds2dhms(remaining)
+    next_allowed_at: datetime = first_active.get_next_allowed_at()
+    next_allowed_utc: datetime = next_allowed_at.astimezone(dt_timezone.utc)
 
-    message = USERNAME_CHANGE_LIMIT_ERROR.format(
-      limit=settings.USERNAME_CHANGE_LIMIT,
-      window_days=settings.USERNAME_CHANGE_WINDOW_DAYS,
-      human=human,
-    )
+    human = next_allowed_utc.strftime(settings.DEFAULT_HUMAN_DATETIME_FORMAT)
+
+    message = USERNAME_CHANGE_LIMIT_ERROR.format(human=human)
 
     raise serializers.ValidationError(message)
 

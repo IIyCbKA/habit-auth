@@ -1,5 +1,4 @@
 from ipaddress import ip_address, ip_network
-from datetime import timedelta
 
 TRUSTED_PROXIES = [
   ip_network('127.0.0.1'),
@@ -31,27 +30,3 @@ def get_client_ip(request) -> str | None:
     return str(ip_address(remote)) if remote else None
   except ValueError:
     return None
-
-
-def seconds2dhms(value: int | float | timedelta) -> str:
-  if isinstance(value, timedelta):
-    total = int(value.total_seconds())
-  else:
-    total = int(value)
-
-  if total <= 0:
-    return '0 seconds'
-
-  days, rem = divmod(total, 86400)
-  hours, rem = divmod(rem, 3600)
-  minutes, seconds = divmod(rem, 60)
-
-  parts = []
-  if days:
-    parts.append(f'{days} days')
-  if hours or (days and (minutes or seconds)):
-    parts.append(f'{hours} hours')
-  if minutes or (hours and seconds):
-    parts.append(f'{minutes} minutes')
-  parts.append(f'{seconds} seconds')
-  return ', '.join(parts)

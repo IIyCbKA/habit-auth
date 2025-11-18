@@ -173,8 +173,11 @@ class UsernameChange(models.Model):
   def get_cutoff(cls) -> datetime:
     return timezone.now() - cls.get_window()
 
+  def get_next_allowed_at(self) -> datetime:
+    return self.changed_at + self.get_window()
+
   def time_until_next_change(self) -> timedelta:
-    next_allowed_at: datetime = self.changed_at + self.get_window()
+    next_allowed_at: datetime = self.get_next_allowed_at()
     remaining: timedelta = next_allowed_at - timezone.now()
 
     if remaining.total_seconds() < 0:
