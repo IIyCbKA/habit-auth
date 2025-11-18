@@ -9,6 +9,7 @@ import {
   CONTINUE_BUTTON_TEXT,
   MODAL_TITLE,
   NEW_USERNAME_PLACEHOLDER,
+  NOTE,
 } from "./constants";
 import { EMPTY_STRING } from "@/core/constants";
 import { validateNonEmpty } from "@/domain/auth/validators";
@@ -88,6 +89,7 @@ export default function UsernameModal({
           {CONTINUE_BUTTON_TEXT}
         </Button>
       </form>
+      <span className={styles.note}>{NOTE}</span>
     </Modal>
   );
 }

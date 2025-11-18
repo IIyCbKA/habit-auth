@@ -3,3 +3,9 @@
   display: flex;
   flex-direction: column;
 }
+
+.note {
+  margin-top: 12px;
+  font: var(--text-semibold-small);
+  color: var(--text-secondary-color);
+}

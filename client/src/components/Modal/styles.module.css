@@ -21,6 +21,8 @@
     padding: 36px;
     background-color: var(--background-color);
     border-radius: var(--border-radius-large);
+    display: flex;
+    flex-direction: column;
   }
 
   .enter        { transform: translateY(-1%); opacity: 0; }
